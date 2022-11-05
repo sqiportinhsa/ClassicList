@@ -1,0 +1,16 @@
+digraph G{
+rankdir=LR;node [shape=record,style="filled"];
+splines=ortho;
+info [label = "List | size: 2 "]info->node000002aadbed6e00 [style=invis, weight = 100]
+node000002aadbed6e00 [label="reserved|prev: 000002aadbed1470|adr : 000002aadbed6e00|next: 000002aadbed1490",fillcolor="#BEA0A0",color="#361C1C"];
+node000002aadbed6e00->node000002aadbed1490 [style=invis, weight = 100]
+node000002aadbed6e00->node000002aadbed1490 [color="#303C54",constraint=false];
+node000002aadbed6e00->node000002aadbed1470 [color="#54303c",constraint=false];
+node000002aadbed1490 [label="node 1|{val: 2|{prev: 000002aadbed6e00|adr : 000002aadbed1490|next: 000002aadbed1470}}",fillcolor="#9AA5BB",color="#232D42"];
+node000002aadbed1490->node000002aadbed1470 [style=invis, weight = 100]
+node000002aadbed1490->node000002aadbed1470 [color="#303C54",constraint=false];
+node000002aadbed1490->node000002aadbed6e00 [color="#54303c",constraint=false];
+node000002aadbed1470 [label="node 2|{val: 1|{prev: 000002aadbed1490|adr : 000002aadbed1470|next: 000002aadbed6e00}}",fillcolor="#9AA5BB",color="#232D42"];
+node000002aadbed1470->node000002aadbed6e00 [color="#303C54",constraint=false];
+node000002aadbed1470->node000002aadbed1490 [color="#54303c",constraint=false];
+}

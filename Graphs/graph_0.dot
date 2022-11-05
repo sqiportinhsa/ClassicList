@@ -1,0 +1,9 @@
+digraph G{
+rankdir=LR;node [shape=record,style="filled"];
+splines=ortho;
+info [label = "List | size: 0 "]info->node000002aadbed6e00 [style=invis, weight = 100]
+node000002aadbed6e00 [label="reserved|prev: 000002aadbed6e00|adr : 000002aadbed6e00|next: 000002aadbed6e00",fillcolor="#BEA0A0",color="#361C1C"];
+node000002aadbed6e00->node000002aadbed6e00 [style=invis, weight = 100]
+node000002aadbed6e00->node000002aadbed6e00 [color="#303C54",constraint=false];
+node000002aadbed6e00->node000002aadbed6e00 [color="#54303c",constraint=false];
+}
