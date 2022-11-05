@@ -6,7 +6,6 @@
 #include "list.h"
 
 
-
 static void dump_list_data(const List *list, FILE *output);
 
 static int verify_loop(const List *list);
@@ -15,9 +14,9 @@ static int  generate_graph_code(const List *list);
 static void generate_file_name(char *filename, const char *extension);
 
 
-static const int max_file_with_graphviz_code_name_len = 15;
+static const int max_file_with_graphviz_code_name_len = 30;
 static const int max_generation_png_command_len = 100;
-static const int max_png_file_name_len = 15;
+static const int max_png_file_name_len = 30;
 
 
 int real_list_ctr(List *list, const char *file, const char *func, int line) {
@@ -450,7 +449,7 @@ static int generate_graph_code(const List *list) {
 
 static void generate_file_name(char *filename, const char *extension)  {
     static int file_with_graphviz_code_counter = 0;
-    sprintf(filename, "graph_%d.%s", file_with_graphviz_code_counter, extension);
+    sprintf(filename, "Graphs/graph_%d.%s", file_with_graphviz_code_counter, extension);
     ++file_with_graphviz_code_counter;
 }
 
