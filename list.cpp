@@ -6,9 +6,6 @@
 #include "list.h"
 
 
-static void set_free_cells(List_elem *data, size_t first, size_t last, size_t size);
-
-static size_t calculate_new_size(const List *list, size_t new_size);
 
 static void dump_list_data(const List *list, FILE *output);
 
@@ -305,8 +302,7 @@ int real_dump_list(const List *list, const char* file, const char* func, int lin
     return errors;
 }
 
-List_elem* get_real_index_by_logical(List *list, size_t logical_index, int *errors) {
-    int found_errors = NO_LIST_ERRORS;
+List_elem* get_pointer_by_index(List *list, size_t logical_index, int *errors) {
 
     if (list == nullptr) {
         if (errors == nullptr) {
@@ -317,11 +313,11 @@ List_elem* get_real_index_by_logical(List *list, size_t logical_index, int *erro
         return nullptr;
     }
 
-    List_elem *real_index = list->zero_elem;
+    List_elem *pointer = list->zero_elem;
 
     for (size_t i = 0; i < logical_index; ++i) {
 
-        if (real_index == nullptr) {
+        if (pointer == nullptr) {
             if (errors == nullptr) {
                 return 0;
             }
@@ -330,10 +326,10 @@ List_elem* get_real_index_by_logical(List *list, size_t logical_index, int *erro
             return nullptr;
         }
         
-        real_index = real_index->next;
+        pointer = pointer->next;
     }
 
-    return real_index;
+    return pointer;
 }
 
 static void dump_list_data(const List *list, FILE *output) {
@@ -345,13 +341,13 @@ static void dump_list_data(const List *list, FILE *output) {
     fprintf(output, "\t\tindex: {");
 
     for (size_t i = 0; i <= list->size; ++i) {
-        fprintf(output, "%8d ", (int) i);
+        fprintf(output, "%zu ", i);
     }
 
     fprintf(output, "}\n\t\tdata:  {");
 
     for (size_t i = 0; i <= list->size; ++i) {
-        fprintf(output, "%8d ", next->val);
+        fprintf(output, "%16d ", next->val);
 
         next = next->next;
     }
@@ -361,7 +357,7 @@ static void dump_list_data(const List *list, FILE *output) {
     fprintf(output, "}\n\t\tprev:  {");
 
     for (size_t i = 0; i <= list->size; ++i) {
-        fprintf(output, "%8zu ", next->val);
+        fprintf(output, "%p ", next->prev);
 
         next = next->next;
     }
@@ -371,7 +367,7 @@ static void dump_list_data(const List *list, FILE *output) {
     fprintf(output, "}\n\t\tnext:  {");
 
     for (size_t i = 0; i <= list->size; ++i) {
-        fprintf(output, "%8zu ", next->val);
+        fprintf(output, "%p ", next->next);
 
         next = next->next;
     }

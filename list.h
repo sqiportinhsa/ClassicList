@@ -68,11 +68,11 @@ static const char *NEXT_ARROW_COLOR = "#303C54";
         fprintf(code_output, format, ##__VA_ARGS__);
 
 
-#define Print_busy(elem, i)                                                          \
-        Print_code("node%p [label=\"node %d|{val: %d|{prev: %p|adr : %p|next: %p}}\""\
-                                                ",fillcolor=\"%s\",color=\"%s\"];\n",\
-                                    elem, i, elem->val, elem->prev, elem, elem->next,\
-                                          DATACELL_FILL__COLOR, DATACELL_FRAME_COLOR);
+#define Print_busy(elem, i)                                                           \
+        Print_code("node%p [label=\"node %zu|{val: %d|{prev: %p|adr : %p|next: %p}}\""\
+                                                 ",fillcolor=\"%s\",color=\"%s\"];\n",\
+                                     elem, i, elem->val, elem->prev, elem, elem->next,\
+                                           DATACELL_FILL__COLOR, DATACELL_FRAME_COLOR);
 
 #define Print_reserved(elem)                                                                                 \
         Print_code("node%p [label=\"reserved|prev: %p|adr : %p|next: %p\",fillcolor=\"%s\",color=\"%s\"];\n",\
@@ -110,6 +110,6 @@ int list_verificator(const List *list);
 
 int real_dump_list(const List *list, const char* file, const char* func, int line, const char *message, ...);
 
-List_elem* get_real_index_by_logical(List *list, size_t logical_index, int *errors = nullptr);
+List_elem* get_pointer_by_index(List *list, size_t logical_index, int *errors = nullptr);
 
 #endif
